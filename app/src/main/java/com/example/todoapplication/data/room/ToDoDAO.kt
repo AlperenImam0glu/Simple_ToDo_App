@@ -14,14 +14,14 @@ interface ToDoDAO {
     suspend fun getTodoList(): List<ToDoModel>
 
     @Insert
-    suspend fun kaydet(kisi: ToDoModel)
+    suspend fun createToDo(kisi: ToDoModel)
 
     @Update
-    suspend fun guncelle(kisi: ToDoModel)
+    suspend fun updateToDo(kisi: ToDoModel)
 
     @Delete
-    suspend fun sil(kisi: ToDoModel)
+    suspend fun deleteToDo(kisi: ToDoModel)
 
     @Query("Select * FROM todo WHERE todo_title like '%'||:aramaKelimesi||'%'")
-    suspend fun ara(aramaKelimesi: String): List<ToDoModel>
+    suspend fun searchToDo(aramaKelimesi: String): List<ToDoModel>
 }
