@@ -42,6 +42,11 @@ class HomepageFragment : Fragment() {
         return binding.root
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.getTodoList()
+    }
+
     fun observer(){
         viewModel.todoList.observe(viewLifecycleOwner) { todoList ->
             val kisilerAdaper = TodoAdapter(requireContext(), todoList,viewModel)

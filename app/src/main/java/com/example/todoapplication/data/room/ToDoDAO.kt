@@ -14,7 +14,7 @@ interface ToDoDAO {
     suspend fun getTodoList(): List<ToDoModel>
 
     @Insert
-    suspend fun createToDo(kisi: ToDoModel)
+    suspend fun createToDo(kisi: ToDoModel) : Long
 
     @Update
     suspend fun updateToDo(kisi: ToDoModel)

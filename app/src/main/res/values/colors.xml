@@ -2,4 +2,13 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="text_color">#FFFFFFFF</color>
+    <color name="page_background">#303030</color>
+    <color name="fab_color">#37d5c4</color>
+    <color name="rv_item_color">#d64f6f</color>
+    <color name="rv_item_color1">#be6a0b</color>
+    <color name="rv_item_color2">#4d61c1</color>
+    <color name="rv_item_color3">#36b4a6</color>
+    <color name="rv_item_color4">#cc5dbd</color>
+    <color name="rv_item_color5">#d49d29</color>
 </resources>

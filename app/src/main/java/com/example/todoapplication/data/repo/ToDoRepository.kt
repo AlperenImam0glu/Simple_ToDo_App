@@ -11,7 +11,7 @@ class ToDoRepository(var toDoDataSource:ToDoDataSource) {
 
     suspend fun deleteToDo(todo_id: Int) = toDoDataSource.deleteToDo(todo_id)
 
-    suspend fun createToDo(toDo: ToDoModel) = toDoDataSource.createToDo(toDo)
+    suspend fun createToDo(toDo: ToDoModel):Long = toDoDataSource.createToDo(toDo)
 
     suspend fun searchToDo(searchedString: String): List<ToDoModel> = toDoDataSource.searchToDo(searchedString)
 }

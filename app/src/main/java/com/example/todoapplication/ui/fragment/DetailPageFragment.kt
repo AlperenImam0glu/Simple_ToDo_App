@@ -24,8 +24,8 @@ class DetailPageFragment : Fragment() {
         val bundle: DetailPageFragmentArgs by navArgs()
         val todo = bundle.todo
 
-        binding.editTextText.text=  Editable.Factory.getInstance().newEditable(todo.todo_title)
-        binding.editTextText2.text=  Editable.Factory.getInstance().newEditable(todo.todo_body)
+        binding.editTextTitle.text=  Editable.Factory.getInstance().newEditable(todo.todo_title)
+        binding.editTextBody.text=  Editable.Factory.getInstance().newEditable(todo.todo_body)
 
         return binding.root
     }

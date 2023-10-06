@@ -11,7 +11,7 @@ class ToDoDataSource(var toDoDAO: ToDoDAO) {
         return@withContext toDoDAO.getTodoList()
     }
 
-    suspend fun createToDo(newToDo: ToDoModel) {
+    suspend fun createToDo(newToDo: ToDoModel): Long = withContext(Dispatchers.IO)  {
         toDoDAO.createToDo(newToDo)
     }
 

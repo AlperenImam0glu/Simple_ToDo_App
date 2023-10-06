@@ -4,105 +4,121 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/page_background"
     tools:context=".ui.fragment.NewToDoPageFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
+        android:background="@color/fab_color"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="Create New To Do" />
+        app:title="CREATE NEW TO DO"
+        app:titleTextColor="@color/text_color" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/textViewTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:text="Title"
+        android:textColor="@color/text_color"
         android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/editText_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:background="#D3D3D3"
+        android:background="@drawable/bg_white_rounded"
         android:ems="10"
-
-        android:hint="Title"
+        android:hint="Go to shopping..."
         android:inputType="text"
+        android:padding="5dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/textViewToDoBody"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="To Do"
+        android:textColor="@color/text_color"
         android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_title" />
 
     <EditText
-        android:id="@+id/editTextText2"
+        android:id="@+id/editText_body"
         android:layout_width="0dp"
         android:layout_height="200dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:background="#D3D3D3"
+        android:background="@drawable/bg_white_rounded"
         android:ems="10"
         android:gravity="left"
-        android:hint="Go to shopping....."
-        android:inputType="text"
+        android:hint="buy milk and eggs....."
+        android:inputType="textMultiLine"
+        android:lines="4"
+        android:maxLines="4"
+        android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewToDoBody" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button_save"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/fab_color"
         android:text="SAVE"
+        android:textSize="32sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/textViewSelectDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Select Date"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText2" />
+        android:text="Date not selected"
+        android:padding="5dp"
+        android:backgroundTint="@color/rv_item_color1"
+        android:background="@drawable/bg_white_rounded"
+        android:textColor="@color/text_color"
+        app:layout_constraintBottom_toBottomOf="@+id/button_select_date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button_select_date"
+        app:layout_constraintTop_toTopOf="@+id/button_select_date" />
 
     <Button
         android:id="@+id/button_select_date"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="DATE"
-        app:layout_constraintEnd_toEndOf="@+id/textView7"
+        android:layout_marginTop="48dp"
+        android:backgroundTint="@color/fab_color"
+        android:text="SELECT DATE"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/textViewSelectDate"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_body" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
