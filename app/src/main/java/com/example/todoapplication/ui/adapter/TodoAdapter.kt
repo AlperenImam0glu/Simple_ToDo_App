@@ -1,8 +1,6 @@
 package com.example.todoapplication.ui.adapter
 
-import android.annotation.SuppressLint
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.Navigation
@@ -12,8 +10,7 @@ import com.example.todoapplication.data.entitiy.ToDoModel
 import com.example.todoapplication.databinding.TodoItemBinding
 import com.example.todoapplication.ui.fragment.HomepageFragmentDirections
 import com.example.todoapplication.ui.viewmodel.HomepageViewModel
-import java.text.SimpleDateFormat
-import java.util.Date
+import com.example.todoapplication.util.timestampStringtodate
 
 class TodoAdapter(
     val mContext: Context,
@@ -34,27 +31,15 @@ class TodoAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
         val binding = holder.binding
-
-        val dateString = convertDateTime(todoList[position].todo_date)
         binding.textVievTitle.text = todoList[position].todo_title
         binding.textViewBody.text = todoList[position].todo_body
-        binding.textViewDate.text = "$dateString"
-        val color =changeColor(position)
-        binding.textVievTitle.setTextColor(color.toInt())
-        Log.e("hata","$color")
+        binding.textViewDate.text = todoList[position].todo_date.timestampStringtodate()
+        binding.constraintLayout.setBackgroundResource(changeColor(position))
         binding.card.setOnClickListener {
             val action = HomepageFragmentDirections.homepageToDetailpage(todoList[position])
             Navigation.findNavController(it).navigate(action)
         }
-    }
-
-    fun convertDateTime(timestampString: String): String {
-        val timestamp: Long = timestampString.toLong()
-        val date = Date(timestamp * 1000)
-        val format = SimpleDateFormat("dd/MM/yyyy")
-        return format.format(date)
     }
 
     fun changeColor(position: Int): Int {
@@ -70,7 +55,7 @@ class TodoAdapter(
             return R.color.rv_item_color4
         } else if (position % 6 == 5) {
             return R.color.rv_item_color5
-        }else{
+        } else {
             return R.color.rv_item_color
         }
     }

@@ -11,14 +11,15 @@
         android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/fab_color"
+        android:background="@drawable/toolbar_bottom_radius"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:titleTextAppearance="@style/Toolbar.TitleText"
         app:title="CREATE NEW TO DO"
-        app:titleTextColor="@color/text_color" />
+        />
 
     <TextView
         android:id="@+id/textViewTitle"

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/page_background"
     tools:context=".ui.fragment.DetailPageFragment">
 
 
@@ -11,13 +12,14 @@
         android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
+        android:background="@drawable/toolbar_bottom_radius"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="ToDo" />
+        app:title="TO DO DETAIL"
+        app:titleTextAppearance="@style/Toolbar.TitleText" />
 
     <TextView
         android:id="@+id/textViewTitle"
@@ -26,7 +28,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:text="Title"
+        android:textColor="@color/text_color"
         android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
@@ -36,10 +40,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:background="#D3D3D3"
+        android:background="@drawable/bg_white_rounded"
         android:ems="10"
-        android:hint="Title"
+        android:hint="Go to shopping..."
         android:inputType="text"
+        android:padding="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
 
@@ -50,7 +55,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="To Do"
+        android:textColor="@color/text_color"
         android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_title" />
 
@@ -61,48 +68,71 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:background="#D3D3D3"
+        android:background="@drawable/bg_white_rounded"
         android:ems="10"
         android:gravity="left"
-        android:hint="Go to shopping....."
-        android:inputType="text"
+        android:hint="buy milk and eggs....."
+        android:inputType="textMultiLine"
+        android:lines="4"
+        android:maxLines="4"
+        android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewToDoBody" />
 
     <Button
-        android:id="@+id/button_save"
+        android:id="@+id/button_delete"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_height="80dp"
+        android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="32dp"
-        android:text="Update
-"
+        android:backgroundTint="@color/rv_item_color"
+        android:text="DELETE"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_update"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <Button
+        android:id="@+id/button_update"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/fab_color"
+        android:layout_marginHorizontal="16dp"
+        android:text="UPDATE"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/button_delete" />
+
     <TextView
-        android:id="@+id/textViewSelectDateTitle"
+        android:id="@+id/textViewSelectDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Select Date"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_body" />
+        android:background="@drawable/bg_white_rounded"
+        android:backgroundTint="@color/rv_item_color1"
+        android:padding="5dp"
+        android:text="Date not selected"
+        android:textColor="@color/text_color"
+        app:layout_constraintBottom_toBottomOf="@+id/button_select_date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button_select_date"
+        app:layout_constraintTop_toTopOf="@+id/button_select_date" />
 
     <Button
         android:id="@+id/button_select_date"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="DATE"
-        app:layout_constraintEnd_toEndOf="@+id/textViewSelectDateTitle"
+        android:layout_marginTop="48dp"
+        android:backgroundTint="@color/fab_color"
+        android:text="Change Date"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/textViewSelectDate"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewSelectDateTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_body" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

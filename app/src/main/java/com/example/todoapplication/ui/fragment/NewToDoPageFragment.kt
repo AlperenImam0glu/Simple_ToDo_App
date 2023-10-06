@@ -2,6 +2,7 @@ package com.example.todoapplication.ui.fragment
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import com.example.todoapplication.data.entitiy.ToDoModel
 import com.example.todoapplication.databinding.FragmentNewToDoPageBinding
 import com.example.todoapplication.ui.viewmodel.HomepageViewModel
 import com.example.todoapplication.ui.viewmodel.NewToDoPageViewModel
+import com.example.todoapplication.util.dateStringToTimestamp
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -66,34 +68,26 @@ class NewToDoPageFragment : Fragment() {
             if (binding.textViewSelectDate.text == "Date not selected") {
                 Toast.makeText(requireContext(), "Select date", Toast.LENGTH_SHORT).show()
             } else {
-
-                toDoObject.todo_date = convertTimeStramp(binding.textViewSelectDate.text.toString())
+                toDoObject.todo_date =
+                    binding.textViewSelectDate.text.toString().dateStringToTimestamp()
             }
-
             if (toDoObject.todo_date != "" && toDoObject.todo_body != "" && toDoObject.todo_title != "") {
-
                 viewModel.createToDO(toDoObject)
-
             } else {
                 Toast.makeText(requireContext(), "Fill in all fields", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
-    fun convertTimeStramp(dateString: String): String {
-        val dateFormat = SimpleDateFormat("dd/MM/yyyy")
-        val date = dateFormat.parse(dateString)
-        val timestamp = date?.time ?: 0L
-        return timestamp.toString()
-    }
-
-    fun observer(){
+    fun observer() {
         viewModel.insertState.observe(viewLifecycleOwner) {
-          if(it){
-              Navigation.findNavController(binding.buttonSave).popBackStack()
-          }else{
-              Toast.makeText(requireContext(), "unsuccessful", Toast.LENGTH_SHORT).show()
-          }
+            if (it) {
+                Toast.makeText(requireContext(), "Created TO DO successfully", Toast.LENGTH_SHORT)
+                    .show()
+                Navigation.findNavController(binding.buttonSave).popBackStack()
+            } else {
+                Toast.makeText(requireContext(), "unsuccessful", Toast.LENGTH_SHORT).show()
+            }
 
         }
     }

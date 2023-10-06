@@ -28,16 +28,9 @@ class HomepageFragment : Fragment() {
         binding = FragmentHomepageBinding.inflate(layoutInflater)
         val tempViewModel: HomepageViewModel by viewModels()
         viewModel = tempViewModel
-        binding.rv.layoutManager= LinearLayoutManager(requireContext())
+        binding.rv.layoutManager = LinearLayoutManager(requireContext())
         observer()
-
-
-        binding.fab.setOnClickListener {
-            val action = HomepageFragmentDirections.homepageToNewTodoPage()
-            Navigation.findNavController(it).navigate(action)
-        }
-
-
+        buttonClickListeners()
 
         return binding.root
     }
@@ -47,10 +40,37 @@ class HomepageFragment : Fragment() {
         viewModel.getTodoList()
     }
 
-    fun observer(){
-        viewModel.todoList.observe(viewLifecycleOwner) { todoList ->
-            val kisilerAdaper = TodoAdapter(requireContext(), todoList,viewModel)
+    fun buttonClickListeners() {
+        binding.fab.setOnClickListener {
+            val action = HomepageFragmentDirections.homepageToNewTodoPage()
+            Navigation.findNavController(it).navigate(action)
+        }
 
+        binding.searchView.setOnQueryTextListener(object :
+            android.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(newText: String?): Boolean {
+                if (newText != null) {
+                    searchToDo(newText)
+                }
+                return false
+            }
+
+            override fun onQueryTextChange(query: String?): Boolean {
+                if (query != null) {
+                    searchToDo(query)
+                }
+                return false
+            }
+        })
+    }
+
+    fun searchToDo(searchString: String) {
+        viewModel.searchToDo(searchString)
+    }
+
+    fun observer() {
+        viewModel.todoList.observe(viewLifecycleOwner) { todoList ->
+            val kisilerAdaper = TodoAdapter(requireContext(), todoList, viewModel)
             binding.rv.adapter = kisilerAdaper
         }
     }

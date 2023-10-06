@@ -7,7 +7,7 @@ class ToDoRepository(var toDoDataSource:ToDoDataSource) {
 
     suspend fun getTodoList() = toDoDataSource.getTodoList()
 
-    suspend fun udpateToDo(toDo : ToDoModel) = toDoDataSource.updateToDo(toDo)
+    suspend fun updateToDo(toDo : ToDoModel) = toDoDataSource.updateToDo(toDo)
 
     suspend fun deleteToDo(todo_id: Int) = toDoDataSource.deleteToDo(todo_id)
 

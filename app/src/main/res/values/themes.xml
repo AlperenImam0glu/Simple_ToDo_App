@@ -7,5 +7,11 @@
 
     </style>
 
+    <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
     <style name="Theme.ToDoApplication" parent="Base.Theme.ToDoApplication" />
 </resources>
